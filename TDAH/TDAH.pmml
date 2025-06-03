@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PMML version="4.2" xmlns="http://www.dmg.org/PMML-4_2">
+  <Header copyright="Josue">
+    <Application name="KNIME" version="5.4.3"/>
+  </Header>
+  <DataDictionary numberOfFields="13">
+    <DataField name="Edad" optype="continuous" dataType="integer">
+      <Interval closure="closedClosed" leftMargin="18.0" rightMargin="24.0"/>
+    </DataField>
+    <DataField name="País" optype="categorical" dataType="string"/>
+    <DataField name="Promedio_Horas_Diarias_Uso" optype="continuous" dataType="integer">
+      <Interval closure="closedClosed" leftMargin="2.0" rightMargin="8.0"/>
+    </DataField>
+    <DataField name="Puntaje_Salud_Mental" optype="continuous" dataType="integer">
+      <Interval closure="closedClosed" leftMargin="4.0" rightMargin="9.0"/>
+    </DataField>
+    <DataField name="Estado_Sentimental" optype="categorical" dataType="string">
+      <Value value="En una relación"/>
+      <Value value="Soltero/a"/>
+      <Value value="Complicado"/>
+    </DataField>
+    <DataField name="Conflictos_Por_Redes_Sociales" optype="continuous" dataType="integer">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="5.0"/>
+    </DataField>
+    <DataField name="Nivel_Academico" optype="categorical" dataType="string">
+      <Value value="Pregrado"/>
+      <Value value="Posgrado"/>
+      <Value value="Escuela Secundaria"/>
+    </DataField>
+    <DataField name="Plataforma_mas_usada" optype="categorical" dataType="string">
+      <Value value="Instagram"/>
+      <Value value="Twitter"/>
+      <Value value="TikTok"/>
+      <Value value="YouTube"/>
+      <Value value="Facebook"/>
+      <Value value="LinkedIn"/>
+      <Value value="Snapchat"/>
+      <Value value="LINE"/>
+      <Value value="KakaoTalk"/>
+      <Value value="VKontakte"/>
+      <Value value="WhatsApp"/>
+      <Value value="WeChat"/>
+    </DataField>
+    <DataField name="Afecta_Rendimiento_Academico" optype="continuous" dataType="integer">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="Puntajeadiccion" optype="continuous" dataType="integer">
+      <Interval closure="closedClosed" leftMargin="2.0" rightMargin="9.0"/>
+    </DataField>
+    <DataField name="genero" optype="categorical" dataType="string">
+      <Value value="Femenino"/>
+      <Value value="Masculino"/>
+    </DataField>
+    <DataField name="Descanso" optype="continuous" dataType="integer">
+      <Interval closure="closedClosed" leftMargin="4.0" rightMargin="10.0"/>
+    </DataField>
+    <DataField name="resultado" optype="categorical" dataType="string">
+      <Value value="alto"/>
+      <Value value="bajo"/>
+      <Value value="medio"/>
+    </DataField>
+  </DataDictionary>
+  <TreeModel modelName="DecisionTree" functionName="classification" splitCharacteristic="binarySplit" missingValueStrategy="lastPrediction" noTrueChildStrategy="returnNullPrediction">
+    <MiningSchema>
+      <MiningField name="Edad" invalidValueTreatment="asIs"/>
+      <MiningField name="Promedio_Horas_Diarias_Uso" invalidValueTreatment="asIs"/>
+      <MiningField name="Puntaje_Salud_Mental" invalidValueTreatment="asIs"/>
+      <MiningField name="Estado_Sentimental" invalidValueTreatment="asIs"/>
+      <MiningField name="Conflictos_Por_Redes_Sociales" invalidValueTreatment="asIs"/>
+      <MiningField name="Nivel_Academico" invalidValueTreatment="asIs"/>
+      <MiningField name="Plataforma_mas_usada" invalidValueTreatment="asIs"/>
+      <MiningField name="Afecta_Rendimiento_Academico" invalidValueTreatment="asIs"/>
+      <MiningField name="Puntajeadiccion" invalidValueTreatment="asIs"/>
+      <MiningField name="genero" invalidValueTreatment="asIs"/>
+      <MiningField name="Descanso" invalidValueTreatment="asIs"/>
+      <MiningField name="resultado" invalidValueTreatment="asIs" usageType="target"/>
+    </MiningSchema>
+    <Node id="0" score="alto" recordCount="705.0">
+      <True/>
+      <ScoreDistribution value="alto" recordCount="408.0"/>
+      <ScoreDistribution value="bajo" recordCount="17.0"/>
+      <ScoreDistribution value="medio" recordCount="280.0"/>
+      <Node id="1" score="medio" recordCount="297.0">
+        <SimplePredicate field="Puntajeadiccion" operator="lessOrEqual" value="6.5"/>
+        <ScoreDistribution value="alto" recordCount="0.0"/>
+        <ScoreDistribution value="bajo" recordCount="17.0"/>
+        <ScoreDistribution value="medio" recordCount="280.0"/>
+        <Node id="2" score="bajo" recordCount="17.0">
+          <SimplePredicate field="Puntajeadiccion" operator="lessOrEqual" value="3.5"/>
+          <ScoreDistribution value="alto" recordCount="0.0"/>
+          <ScoreDistribution value="bajo" recordCount="17.0"/>
+          <ScoreDistribution value="medio" recordCount="0.0"/>
+        </Node>
+        <Node id="3" score="medio" recordCount="280.0">
+          <SimplePredicate field="Puntajeadiccion" operator="greaterThan" value="3.5"/>
+          <ScoreDistribution value="alto" recordCount="0.0"/>
+          <ScoreDistribution value="bajo" recordCount="0.0"/>
+          <ScoreDistribution value="medio" recordCount="280.0"/>
+        </Node>
+      </Node>
+      <Node id="4" score="alto" recordCount="408.0">
+        <SimplePredicate field="Puntajeadiccion" operator="greaterThan" value="6.5"/>
+        <ScoreDistribution value="alto" recordCount="408.0"/>
+        <ScoreDistribution value="bajo" recordCount="0.0"/>
+        <ScoreDistribution value="medio" recordCount="0.0"/>
+      </Node>
+    </Node>
+  </TreeModel>
+</PMML>

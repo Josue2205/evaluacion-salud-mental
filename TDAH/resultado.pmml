@@ -1,0 +1,1032 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PMML version="4.2" xmlns="http://www.dmg.org/PMML-4_2">
+  <Header copyright="Josue">
+    <Application name="KNIME" version="5.4.3"/>
+  </Header>
+  <DataDictionary numberOfFields="13">
+    <DataField name="Edad" optype="continuous" dataType="integer">
+      <Interval closure="closedClosed" leftMargin="18.0" rightMargin="24.0"/>
+    </DataField>
+    <DataField name="País" optype="categorical" dataType="string"/>
+    <DataField name="Promedio_Horas_Diarias_Uso" optype="continuous" dataType="integer">
+      <Interval closure="closedClosed" leftMargin="2.0" rightMargin="8.0"/>
+    </DataField>
+    <DataField name="Puntaje_Salud_Mental" optype="continuous" dataType="integer">
+      <Interval closure="closedClosed" leftMargin="4.0" rightMargin="9.0"/>
+    </DataField>
+    <DataField name="Estado_Sentimental" optype="categorical" dataType="string">
+      <Value value="En una relación"/>
+      <Value value="Soltero/a"/>
+      <Value value="Complicado"/>
+    </DataField>
+    <DataField name="Conflictos_Por_Redes_Sociales" optype="continuous" dataType="integer">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="5.0"/>
+    </DataField>
+    <DataField name="Nivel_Academico" optype="categorical" dataType="string">
+      <Value value="Pregrado"/>
+      <Value value="Posgrado"/>
+      <Value value="Escuela Secundaria"/>
+    </DataField>
+    <DataField name="Plataforma_mas_usada" optype="categorical" dataType="string">
+      <Value value="Instagram"/>
+      <Value value="Twitter"/>
+      <Value value="TikTok"/>
+      <Value value="YouTube"/>
+      <Value value="Facebook"/>
+      <Value value="LinkedIn"/>
+      <Value value="Snapchat"/>
+      <Value value="LINE"/>
+      <Value value="KakaoTalk"/>
+      <Value value="VKontakte"/>
+      <Value value="WhatsApp"/>
+      <Value value="WeChat"/>
+    </DataField>
+    <DataField name="Afecta_Rendimiento_Academico" optype="continuous" dataType="integer">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="genero" optype="categorical" dataType="string">
+      <Value value="Femenino"/>
+      <Value value="Masculino"/>
+    </DataField>
+    <DataField name="Descanso" optype="continuous" dataType="integer">
+      <Interval closure="closedClosed" leftMargin="4.0" rightMargin="10.0"/>
+    </DataField>
+    <DataField name="resultado" optype="categorical" dataType="string">
+      <Value value="alto"/>
+      <Value value="bajo"/>
+      <Value value="medio"/>
+    </DataField>
+    <DataField name="Evaluacion" optype="categorical" dataType="string">
+      <Value value="8"/>
+      <Value value="3"/>
+      <Value value="9"/>
+      <Value value="4"/>
+      <Value value="7"/>
+      <Value value="2"/>
+      <Value value="5"/>
+      <Value value="6"/>
+    </DataField>
+  </DataDictionary>
+  <TreeModel modelName="DecisionTree" functionName="classification" splitCharacteristic="multiSplit" missingValueStrategy="lastPrediction" noTrueChildStrategy="returnNullPrediction">
+    <MiningSchema>
+      <MiningField name="Edad" invalidValueTreatment="asIs"/>
+      <MiningField name="Promedio_Horas_Diarias_Uso" invalidValueTreatment="asIs"/>
+      <MiningField name="Puntaje_Salud_Mental" invalidValueTreatment="asIs"/>
+      <MiningField name="Estado_Sentimental" invalidValueTreatment="asIs"/>
+      <MiningField name="Conflictos_Por_Redes_Sociales" invalidValueTreatment="asIs"/>
+      <MiningField name="Nivel_Academico" invalidValueTreatment="asIs"/>
+      <MiningField name="Plataforma_mas_usada" invalidValueTreatment="asIs"/>
+      <MiningField name="Afecta_Rendimiento_Academico" invalidValueTreatment="asIs"/>
+      <MiningField name="genero" invalidValueTreatment="asIs"/>
+      <MiningField name="Descanso" invalidValueTreatment="asIs"/>
+      <MiningField name="resultado" invalidValueTreatment="asIs"/>
+      <MiningField name="Evaluacion" invalidValueTreatment="asIs" usageType="target"/>
+    </MiningSchema>
+    <Node id="0" score="7" recordCount="705.0">
+      <True/>
+      <ScoreDistribution value="8" recordCount="144.0"/>
+      <ScoreDistribution value="3" recordCount="16.0"/>
+      <ScoreDistribution value="9" recordCount="55.0"/>
+      <ScoreDistribution value="4" recordCount="83.0"/>
+      <ScoreDistribution value="7" recordCount="209.0"/>
+      <ScoreDistribution value="2" recordCount="1.0"/>
+      <ScoreDistribution value="5" recordCount="136.0"/>
+      <ScoreDistribution value="6" recordCount="61.0"/>
+      <Node id="1" score="7" recordCount="408.0">
+        <SimplePredicate field="resultado" operator="equal" value="alto"/>
+        <ScoreDistribution value="8" recordCount="144.0"/>
+        <ScoreDistribution value="3" recordCount="0.0"/>
+        <ScoreDistribution value="9" recordCount="55.0"/>
+        <ScoreDistribution value="4" recordCount="0.0"/>
+        <ScoreDistribution value="7" recordCount="209.0"/>
+        <ScoreDistribution value="2" recordCount="0.0"/>
+        <ScoreDistribution value="5" recordCount="0.0"/>
+        <ScoreDistribution value="6" recordCount="0.0"/>
+        <Node id="2" score="7" recordCount="219.0">
+          <SimplePredicate field="Conflictos_Por_Redes_Sociales" operator="lessOrEqual" value="3.5"/>
+          <ScoreDistribution value="8" recordCount="11.0"/>
+          <ScoreDistribution value="3" recordCount="0.0"/>
+          <ScoreDistribution value="9" recordCount="0.0"/>
+          <ScoreDistribution value="4" recordCount="0.0"/>
+          <ScoreDistribution value="7" recordCount="208.0"/>
+          <ScoreDistribution value="2" recordCount="0.0"/>
+          <ScoreDistribution value="5" recordCount="0.0"/>
+          <ScoreDistribution value="6" recordCount="0.0"/>
+          <Node id="3" score="7" recordCount="62.0">
+            <SimplePredicate field="Estado_Sentimental" operator="equal" value="En una relación"/>
+            <ScoreDistribution value="8" recordCount="11.0"/>
+            <ScoreDistribution value="3" recordCount="0.0"/>
+            <ScoreDistribution value="9" recordCount="0.0"/>
+            <ScoreDistribution value="4" recordCount="0.0"/>
+            <ScoreDistribution value="7" recordCount="51.0"/>
+            <ScoreDistribution value="2" recordCount="0.0"/>
+            <ScoreDistribution value="5" recordCount="0.0"/>
+            <ScoreDistribution value="6" recordCount="0.0"/>
+            <Node id="4" score="7" recordCount="25.0">
+              <SimplePredicate field="Plataforma_mas_usada" operator="equal" value="Instagram"/>
+              <ScoreDistribution value="8" recordCount="3.0"/>
+              <ScoreDistribution value="3" recordCount="0.0"/>
+              <ScoreDistribution value="9" recordCount="0.0"/>
+              <ScoreDistribution value="4" recordCount="0.0"/>
+              <ScoreDistribution value="7" recordCount="22.0"/>
+              <ScoreDistribution value="2" recordCount="0.0"/>
+              <ScoreDistribution value="5" recordCount="0.0"/>
+              <ScoreDistribution value="6" recordCount="0.0"/>
+              <Node id="5" score="8" recordCount="5.0">
+                <SimplePredicate field="Edad" operator="lessOrEqual" value="19.5"/>
+                <ScoreDistribution value="8" recordCount="3.0"/>
+                <ScoreDistribution value="3" recordCount="0.0"/>
+                <ScoreDistribution value="9" recordCount="0.0"/>
+                <ScoreDistribution value="4" recordCount="0.0"/>
+                <ScoreDistribution value="7" recordCount="2.0"/>
+                <ScoreDistribution value="2" recordCount="0.0"/>
+                <ScoreDistribution value="5" recordCount="0.0"/>
+                <ScoreDistribution value="6" recordCount="0.0"/>
+                <Node id="6" score="8" recordCount="3.0">
+                  <SimplePredicate field="genero" operator="equal" value="Femenino"/>
+                  <ScoreDistribution value="8" recordCount="3.0"/>
+                  <ScoreDistribution value="3" recordCount="0.0"/>
+                  <ScoreDistribution value="9" recordCount="0.0"/>
+                  <ScoreDistribution value="4" recordCount="0.0"/>
+                  <ScoreDistribution value="7" recordCount="0.0"/>
+                  <ScoreDistribution value="2" recordCount="0.0"/>
+                  <ScoreDistribution value="5" recordCount="0.0"/>
+                  <ScoreDistribution value="6" recordCount="0.0"/>
+                </Node>
+                <Node id="7" score="7" recordCount="2.0">
+                  <SimplePredicate field="genero" operator="equal" value="Masculino"/>
+                  <ScoreDistribution value="8" recordCount="0.0"/>
+                  <ScoreDistribution value="3" recordCount="0.0"/>
+                  <ScoreDistribution value="9" recordCount="0.0"/>
+                  <ScoreDistribution value="4" recordCount="0.0"/>
+                  <ScoreDistribution value="7" recordCount="2.0"/>
+                  <ScoreDistribution value="2" recordCount="0.0"/>
+                  <ScoreDistribution value="5" recordCount="0.0"/>
+                  <ScoreDistribution value="6" recordCount="0.0"/>
+                </Node>
+              </Node>
+              <Node id="8" score="7" recordCount="20.0">
+                <SimplePredicate field="Edad" operator="greaterThan" value="19.5"/>
+                <ScoreDistribution value="8" recordCount="0.0"/>
+                <ScoreDistribution value="3" recordCount="0.0"/>
+                <ScoreDistribution value="9" recordCount="0.0"/>
+                <ScoreDistribution value="4" recordCount="0.0"/>
+                <ScoreDistribution value="7" recordCount="20.0"/>
+                <ScoreDistribution value="2" recordCount="0.0"/>
+                <ScoreDistribution value="5" recordCount="0.0"/>
+                <ScoreDistribution value="6" recordCount="0.0"/>
+              </Node>
+            </Node>
+            <Node id="9" score="7" recordCount="5.0">
+              <SimplePredicate field="Plataforma_mas_usada" operator="equal" value="Twitter"/>
+              <ScoreDistribution value="8" recordCount="0.0"/>
+              <ScoreDistribution value="3" recordCount="0.0"/>
+              <ScoreDistribution value="9" recordCount="0.0"/>
+              <ScoreDistribution value="4" recordCount="0.0"/>
+              <ScoreDistribution value="7" recordCount="5.0"/>
+              <ScoreDistribution value="2" recordCount="0.0"/>
+              <ScoreDistribution value="5" recordCount="0.0"/>
+              <ScoreDistribution value="6" recordCount="0.0"/>
+            </Node>
+            <Node id="10" score="8" recordCount="13.0">
+              <SimplePredicate field="Plataforma_mas_usada" operator="equal" value="TikTok"/>
+              <ScoreDistribution value="8" recordCount="7.0"/>
+              <ScoreDistribution value="3" recordCount="0.0"/>
+              <ScoreDistribution value="9" recordCount="0.0"/>
+              <ScoreDistribution value="4" recordCount="0.0"/>
+              <ScoreDistribution value="7" recordCount="6.0"/>
+              <ScoreDistribution value="2" recordCount="0.0"/>
+              <ScoreDistribution value="5" recordCount="0.0"/>
+              <ScoreDistribution value="6" recordCount="0.0"/>
+              <Node id="11" score="8" recordCount="6.0">
+                <SimplePredicate field="Puntaje_Salud_Mental" operator="lessOrEqual" value="5.5"/>
+                <ScoreDistribution value="8" recordCount="6.0"/>
+                <ScoreDistribution value="3" recordCount="0.0"/>
+                <ScoreDistribution value="9" recordCount="0.0"/>
+                <ScoreDistribution value="4" recordCount="0.0"/>
+                <ScoreDistribution value="7" recordCount="0.0"/>
+                <ScoreDistribution value="2" recordCount="0.0"/>
+                <ScoreDistribution value="5" recordCount="0.0"/>
+                <ScoreDistribution value="6" recordCount="0.0"/>
+              </Node>
+              <Node id="12" score="7" recordCount="7.0">
+                <SimplePredicate field="Puntaje_Salud_Mental" operator="greaterThan" value="5.5"/>
+                <ScoreDistribution value="8" recordCount="1.0"/>
+                <ScoreDistribution value="3" recordCount="0.0"/>
+                <ScoreDistribution value="9" recordCount="0.0"/>
+                <ScoreDistribution value="4" recordCount="0.0"/>
+                <ScoreDistribution value="7" recordCount="6.0"/>
+                <ScoreDistribution value="2" recordCount="0.0"/>
+                <ScoreDistribution value="5" recordCount="0.0"/>
+                <ScoreDistribution value="6" recordCount="0.0"/>
+              </Node>
+            </Node>
+            <Node id="16" score="7" recordCount="8.0">
+              <SimplePredicate field="Plataforma_mas_usada" operator="equal" value="Facebook"/>
+              <ScoreDistribution value="8" recordCount="0.0"/>
+              <ScoreDistribution value="3" recordCount="0.0"/>
+              <ScoreDistribution value="9" recordCount="0.0"/>
+              <ScoreDistribution value="4" recordCount="0.0"/>
+              <ScoreDistribution value="7" recordCount="8.0"/>
+              <ScoreDistribution value="2" recordCount="0.0"/>
+              <ScoreDistribution value="5" recordCount="0.0"/>
+              <ScoreDistribution value="6" recordCount="0.0"/>
+            </Node>
+            <Node id="18" score="7" recordCount="3.0">
+              <SimplePredicate field="Plataforma_mas_usada" operator="equal" value="Snapchat"/>
+              <ScoreDistribution value="8" recordCount="1.0"/>
+              <ScoreDistribution value="3" recordCount="0.0"/>
+              <ScoreDistribution value="9" recordCount="0.0"/>
+              <ScoreDistribution value="4" recordCount="0.0"/>
+              <ScoreDistribution value="7" recordCount="2.0"/>
+              <ScoreDistribution value="2" recordCount="0.0"/>
+              <ScoreDistribution value="5" recordCount="0.0"/>
+              <ScoreDistribution value="6" recordCount="0.0"/>
+            </Node>
+            <Node id="23" score="7" recordCount="8.0">
+              <SimplePredicate field="Plataforma_mas_usada" operator="equal" value="WeChat"/>
+              <ScoreDistribution value="8" recordCount="0.0"/>
+              <ScoreDistribution value="3" recordCount="0.0"/>
+              <ScoreDistribution value="9" recordCount="0.0"/>
+              <ScoreDistribution value="4" recordCount="0.0"/>
+              <ScoreDistribution value="7" recordCount="8.0"/>
+              <ScoreDistribution value="2" recordCount="0.0"/>
+              <ScoreDistribution value="5" recordCount="0.0"/>
+              <ScoreDistribution value="6" recordCount="0.0"/>
+            </Node>
+          </Node>
+          <Node id="24" score="7" recordCount="145.0">
+            <SimplePredicate field="Estado_Sentimental" operator="equal" value="Soltero/a"/>
+            <ScoreDistribution value="8" recordCount="0.0"/>
+            <ScoreDistribution value="3" recordCount="0.0"/>
+            <ScoreDistribution value="9" recordCount="0.0"/>
+            <ScoreDistribution value="4" recordCount="0.0"/>
+            <ScoreDistribution value="7" recordCount="145.0"/>
+            <ScoreDistribution value="2" recordCount="0.0"/>
+            <ScoreDistribution value="5" recordCount="0.0"/>
+            <ScoreDistribution value="6" recordCount="0.0"/>
+          </Node>
+          <Node id="25" score="7" recordCount="12.0">
+            <SimplePredicate field="Estado_Sentimental" operator="equal" value="Complicado"/>
+            <ScoreDistribution value="8" recordCount="0.0"/>
+            <ScoreDistribution value="3" recordCount="0.0"/>
+            <ScoreDistribution value="9" recordCount="0.0"/>
+            <ScoreDistribution value="4" recordCount="0.0"/>
+            <ScoreDistribution value="7" recordCount="12.0"/>
+            <ScoreDistribution value="2" recordCount="0.0"/>
+            <ScoreDistribution value="5" recordCount="0.0"/>
+            <ScoreDistribution value="6" recordCount="0.0"/>
+          </Node>
+        </Node>
+        <Node id="26" score="8" recordCount="189.0">
+          <SimplePredicate field="Conflictos_Por_Redes_Sociales" operator="greaterThan" value="3.5"/>
+          <ScoreDistribution value="8" recordCount="133.0"/>
+          <ScoreDistribution value="3" recordCount="0.0"/>
+          <ScoreDistribution value="9" recordCount="55.0"/>
+          <ScoreDistribution value="4" recordCount="0.0"/>
+          <ScoreDistribution value="7" recordCount="1.0"/>
+          <ScoreDistribution value="2" recordCount="0.0"/>
+          <ScoreDistribution value="5" recordCount="0.0"/>
+          <ScoreDistribution value="6" recordCount="0.0"/>
+          <Node id="27" score="9" recordCount="29.0">
+            <SimplePredicate field="Puntaje_Salud_Mental" operator="lessOrEqual" value="4.5"/>
+            <ScoreDistribution value="8" recordCount="1.0"/>
+            <ScoreDistribution value="3" recordCount="0.0"/>
+            <ScoreDistribution value="9" recordCount="28.0"/>
+            <ScoreDistribution value="4" recordCount="0.0"/>
+            <ScoreDistribution value="7" recordCount="0.0"/>
+            <ScoreDistribution value="2" recordCount="0.0"/>
+            <ScoreDistribution value="5" recordCount="0.0"/>
+            <ScoreDistribution value="6" recordCount="0.0"/>
+          </Node>
+          <Node id="32" score="8" recordCount="160.0">
+            <SimplePredicate field="Puntaje_Salud_Mental" operator="greaterThan" value="4.5"/>
+            <ScoreDistribution value="8" recordCount="132.0"/>
+            <ScoreDistribution value="3" recordCount="0.0"/>
+            <ScoreDistribution value="9" recordCount="27.0"/>
+            <ScoreDistribution value="4" recordCount="0.0"/>
+            <ScoreDistribution value="7" recordCount="1.0"/>
+            <ScoreDistribution value="2" recordCount="0.0"/>
+            <ScoreDistribution value="5" recordCount="0.0"/>
+            <ScoreDistribution value="6" recordCount="0.0"/>
+            <Node id="33" score="8" recordCount="148.0">
+              <SimplePredicate field="Promedio_Horas_Diarias_Uso" operator="lessOrEqual" value="7.5"/>
+              <ScoreDistribution value="8" recordCount="131.0"/>
+              <ScoreDistribution value="3" recordCount="0.0"/>
+              <ScoreDistribution value="9" recordCount="16.0"/>
+              <ScoreDistribution value="4" recordCount="0.0"/>
+              <ScoreDistribution value="7" recordCount="1.0"/>
+              <ScoreDistribution value="2" recordCount="0.0"/>
+              <ScoreDistribution value="5" recordCount="0.0"/>
+              <ScoreDistribution value="6" recordCount="0.0"/>
+              <Node id="34" score="8" recordCount="40.0">
+                <SimplePredicate field="Plataforma_mas_usada" operator="equal" value="Instagram"/>
+                <ScoreDistribution value="8" recordCount="29.0"/>
+                <ScoreDistribution value="3" recordCount="0.0"/>
+                <ScoreDistribution value="9" recordCount="10.0"/>
+                <ScoreDistribution value="4" recordCount="0.0"/>
+                <ScoreDistribution value="7" recordCount="1.0"/>
+                <ScoreDistribution value="2" recordCount="0.0"/>
+                <ScoreDistribution value="5" recordCount="0.0"/>
+                <ScoreDistribution value="6" recordCount="0.0"/>
+                <Node id="35" score="9" recordCount="18.0">
+                  <SimplePredicate field="Edad" operator="lessOrEqual" value="19.5"/>
+                  <ScoreDistribution value="8" recordCount="8.0"/>
+                  <ScoreDistribution value="3" recordCount="0.0"/>
+                  <ScoreDistribution value="9" recordCount="10.0"/>
+                  <ScoreDistribution value="4" recordCount="0.0"/>
+                  <ScoreDistribution value="7" recordCount="0.0"/>
+                  <ScoreDistribution value="2" recordCount="0.0"/>
+                  <ScoreDistribution value="5" recordCount="0.0"/>
+                  <ScoreDistribution value="6" recordCount="0.0"/>
+                  <Node id="36" score="9" recordCount="11.0">
+                    <SimplePredicate field="Descanso" operator="lessOrEqual" value="5.5"/>
+                    <ScoreDistribution value="8" recordCount="3.0"/>
+                    <ScoreDistribution value="3" recordCount="0.0"/>
+                    <ScoreDistribution value="9" recordCount="8.0"/>
+                    <ScoreDistribution value="4" recordCount="0.0"/>
+                    <ScoreDistribution value="7" recordCount="0.0"/>
+                    <ScoreDistribution value="2" recordCount="0.0"/>
+                    <ScoreDistribution value="5" recordCount="0.0"/>
+                    <ScoreDistribution value="6" recordCount="0.0"/>
+                  </Node>
+                  <Node id="40" score="8" recordCount="7.0">
+                    <SimplePredicate field="Descanso" operator="greaterThan" value="5.5"/>
+                    <ScoreDistribution value="8" recordCount="5.0"/>
+                    <ScoreDistribution value="3" recordCount="0.0"/>
+                    <ScoreDistribution value="9" recordCount="2.0"/>
+                    <ScoreDistribution value="4" recordCount="0.0"/>
+                    <ScoreDistribution value="7" recordCount="0.0"/>
+                    <ScoreDistribution value="2" recordCount="0.0"/>
+                    <ScoreDistribution value="5" recordCount="0.0"/>
+                    <ScoreDistribution value="6" recordCount="0.0"/>
+                    <Node id="41" score="8" recordCount="4.0">
+                      <SimplePredicate field="Estado_Sentimental" operator="equal" value="En una relación"/>
+                      <ScoreDistribution value="8" recordCount="4.0"/>
+                      <ScoreDistribution value="3" recordCount="0.0"/>
+                      <ScoreDistribution value="9" recordCount="0.0"/>
+                      <ScoreDistribution value="4" recordCount="0.0"/>
+                      <ScoreDistribution value="7" recordCount="0.0"/>
+                      <ScoreDistribution value="2" recordCount="0.0"/>
+                      <ScoreDistribution value="5" recordCount="0.0"/>
+                      <ScoreDistribution value="6" recordCount="0.0"/>
+                    </Node>
+                    <Node id="42" score="9" recordCount="3.0">
+                      <SimplePredicate field="Estado_Sentimental" operator="equal" value="Soltero/a"/>
+                      <ScoreDistribution value="8" recordCount="1.0"/>
+                      <ScoreDistribution value="3" recordCount="0.0"/>
+                      <ScoreDistribution value="9" recordCount="2.0"/>
+                      <ScoreDistribution value="4" recordCount="0.0"/>
+                      <ScoreDistribution value="7" recordCount="0.0"/>
+                      <ScoreDistribution value="2" recordCount="0.0"/>
+                      <ScoreDistribution value="5" recordCount="0.0"/>
+                      <ScoreDistribution value="6" recordCount="0.0"/>
+                    </Node>
+                  </Node>
+                </Node>
+                <Node id="44" score="8" recordCount="22.0">
+                  <SimplePredicate field="Edad" operator="greaterThan" value="19.5"/>
+                  <ScoreDistribution value="8" recordCount="21.0"/>
+                  <ScoreDistribution value="3" recordCount="0.0"/>
+                  <ScoreDistribution value="9" recordCount="0.0"/>
+                  <ScoreDistribution value="4" recordCount="0.0"/>
+                  <ScoreDistribution value="7" recordCount="1.0"/>
+                  <ScoreDistribution value="2" recordCount="0.0"/>
+                  <ScoreDistribution value="5" recordCount="0.0"/>
+                  <ScoreDistribution value="6" recordCount="0.0"/>
+                </Node>
+              </Node>
+              <Node id="50" score="8" recordCount="4.0">
+                <SimplePredicate field="Plataforma_mas_usada" operator="equal" value="Twitter"/>
+                <ScoreDistribution value="8" recordCount="4.0"/>
+                <ScoreDistribution value="3" recordCount="0.0"/>
+                <ScoreDistribution value="9" recordCount="0.0"/>
+                <ScoreDistribution value="4" recordCount="0.0"/>
+                <ScoreDistribution value="7" recordCount="0.0"/>
+                <ScoreDistribution value="2" recordCount="0.0"/>
+                <ScoreDistribution value="5" recordCount="0.0"/>
+                <ScoreDistribution value="6" recordCount="0.0"/>
+              </Node>
+              <Node id="51" score="8" recordCount="56.0">
+                <SimplePredicate field="Plataforma_mas_usada" operator="equal" value="TikTok"/>
+                <ScoreDistribution value="8" recordCount="51.0"/>
+                <ScoreDistribution value="3" recordCount="0.0"/>
+                <ScoreDistribution value="9" recordCount="5.0"/>
+                <ScoreDistribution value="4" recordCount="0.0"/>
+                <ScoreDistribution value="7" recordCount="0.0"/>
+                <ScoreDistribution value="2" recordCount="0.0"/>
+                <ScoreDistribution value="5" recordCount="0.0"/>
+                <ScoreDistribution value="6" recordCount="0.0"/>
+                <Node id="52" score="8" recordCount="48.0">
+                  <SimplePredicate field="Promedio_Horas_Diarias_Uso" operator="lessOrEqual" value="6.5"/>
+                  <ScoreDistribution value="8" recordCount="47.0"/>
+                  <ScoreDistribution value="3" recordCount="0.0"/>
+                  <ScoreDistribution value="9" recordCount="1.0"/>
+                  <ScoreDistribution value="4" recordCount="0.0"/>
+                  <ScoreDistribution value="7" recordCount="0.0"/>
+                  <ScoreDistribution value="2" recordCount="0.0"/>
+                  <ScoreDistribution value="5" recordCount="0.0"/>
+                  <ScoreDistribution value="6" recordCount="0.0"/>
+                </Node>
+                <Node id="58" score="8" recordCount="8.0">
+                  <SimplePredicate field="Promedio_Horas_Diarias_Uso" operator="greaterThan" value="6.5"/>
+                  <ScoreDistribution value="8" recordCount="4.0"/>
+                  <ScoreDistribution value="3" recordCount="0.0"/>
+                  <ScoreDistribution value="9" recordCount="4.0"/>
+                  <ScoreDistribution value="4" recordCount="0.0"/>
+                  <ScoreDistribution value="7" recordCount="0.0"/>
+                  <ScoreDistribution value="2" recordCount="0.0"/>
+                  <ScoreDistribution value="5" recordCount="0.0"/>
+                  <ScoreDistribution value="6" recordCount="0.0"/>
+                  <Node id="59" score="9" recordCount="4.0">
+                    <SimplePredicate field="Estado_Sentimental" operator="equal" value="En una relación"/>
+                    <ScoreDistribution value="8" recordCount="0.0"/>
+                    <ScoreDistribution value="3" recordCount="0.0"/>
+                    <ScoreDistribution value="9" recordCount="4.0"/>
+                    <ScoreDistribution value="4" recordCount="0.0"/>
+                    <ScoreDistribution value="7" recordCount="0.0"/>
+                    <ScoreDistribution value="2" recordCount="0.0"/>
+                    <ScoreDistribution value="5" recordCount="0.0"/>
+                    <ScoreDistribution value="6" recordCount="0.0"/>
+                  </Node>
+                  <Node id="60" score="8" recordCount="4.0">
+                    <SimplePredicate field="Estado_Sentimental" operator="equal" value="Soltero/a"/>
+                    <ScoreDistribution value="8" recordCount="4.0"/>
+                    <ScoreDistribution value="3" recordCount="0.0"/>
+                    <ScoreDistribution value="9" recordCount="0.0"/>
+                    <ScoreDistribution value="4" recordCount="0.0"/>
+                    <ScoreDistribution value="7" recordCount="0.0"/>
+                    <ScoreDistribution value="2" recordCount="0.0"/>
+                    <ScoreDistribution value="5" recordCount="0.0"/>
+                    <ScoreDistribution value="6" recordCount="0.0"/>
+                  </Node>
+                </Node>
+              </Node>
+              <Node id="62" score="9" recordCount="1.0">
+                <SimplePredicate field="Plataforma_mas_usada" operator="equal" value="YouTube"/>
+                <ScoreDistribution value="8" recordCount="0.0"/>
+                <ScoreDistribution value="3" recordCount="0.0"/>
+                <ScoreDistribution value="9" recordCount="1.0"/>
+                <ScoreDistribution value="4" recordCount="0.0"/>
+                <ScoreDistribution value="7" recordCount="0.0"/>
+                <ScoreDistribution value="2" recordCount="0.0"/>
+                <ScoreDistribution value="5" recordCount="0.0"/>
+                <ScoreDistribution value="6" recordCount="0.0"/>
+              </Node>
+              <Node id="63" score="8" recordCount="19.0">
+                <SimplePredicate field="Plataforma_mas_usada" operator="equal" value="Facebook"/>
+                <ScoreDistribution value="8" recordCount="19.0"/>
+                <ScoreDistribution value="3" recordCount="0.0"/>
+                <ScoreDistribution value="9" recordCount="0.0"/>
+                <ScoreDistribution value="4" recordCount="0.0"/>
+                <ScoreDistribution value="7" recordCount="0.0"/>
+                <ScoreDistribution value="2" recordCount="0.0"/>
+                <ScoreDistribution value="5" recordCount="0.0"/>
+                <ScoreDistribution value="6" recordCount="0.0"/>
+              </Node>
+              <Node id="65" score="8" recordCount="4.0">
+                <SimplePredicate field="Plataforma_mas_usada" operator="equal" value="Snapchat"/>
+                <ScoreDistribution value="8" recordCount="4.0"/>
+                <ScoreDistribution value="3" recordCount="0.0"/>
+                <ScoreDistribution value="9" recordCount="0.0"/>
+                <ScoreDistribution value="4" recordCount="0.0"/>
+                <ScoreDistribution value="7" recordCount="0.0"/>
+                <ScoreDistribution value="2" recordCount="0.0"/>
+                <ScoreDistribution value="5" recordCount="0.0"/>
+                <ScoreDistribution value="6" recordCount="0.0"/>
+              </Node>
+              <Node id="69" score="8" recordCount="24.0">
+                <SimplePredicate field="Plataforma_mas_usada" operator="equal" value="WhatsApp"/>
+                <ScoreDistribution value="8" recordCount="24.0"/>
+                <ScoreDistribution value="3" recordCount="0.0"/>
+                <ScoreDistribution value="9" recordCount="0.0"/>
+                <ScoreDistribution value="4" recordCount="0.0"/>
+                <ScoreDistribution value="7" recordCount="0.0"/>
+                <ScoreDistribution value="2" recordCount="0.0"/>
+                <ScoreDistribution value="5" recordCount="0.0"/>
+                <ScoreDistribution value="6" recordCount="0.0"/>
+              </Node>
+            </Node>
+            <Node id="71" score="9" recordCount="12.0">
+              <SimplePredicate field="Promedio_Horas_Diarias_Uso" operator="greaterThan" value="7.5"/>
+              <ScoreDistribution value="8" recordCount="1.0"/>
+              <ScoreDistribution value="3" recordCount="0.0"/>
+              <ScoreDistribution value="9" recordCount="11.0"/>
+              <ScoreDistribution value="4" recordCount="0.0"/>
+              <ScoreDistribution value="7" recordCount="0.0"/>
+              <ScoreDistribution value="2" recordCount="0.0"/>
+              <ScoreDistribution value="5" recordCount="0.0"/>
+              <ScoreDistribution value="6" recordCount="0.0"/>
+              <Node id="72" score="9" recordCount="6.0">
+                <SimplePredicate field="Plataforma_mas_usada" operator="equal" value="Instagram"/>
+                <ScoreDistribution value="8" recordCount="0.0"/>
+                <ScoreDistribution value="3" recordCount="0.0"/>
+                <ScoreDistribution value="9" recordCount="6.0"/>
+                <ScoreDistribution value="4" recordCount="0.0"/>
+                <ScoreDistribution value="7" recordCount="0.0"/>
+                <ScoreDistribution value="2" recordCount="0.0"/>
+                <ScoreDistribution value="5" recordCount="0.0"/>
+                <ScoreDistribution value="6" recordCount="0.0"/>
+              </Node>
+              <Node id="74" score="9" recordCount="5.0">
+                <SimplePredicate field="Plataforma_mas_usada" operator="equal" value="TikTok"/>
+                <ScoreDistribution value="8" recordCount="0.0"/>
+                <ScoreDistribution value="3" recordCount="0.0"/>
+                <ScoreDistribution value="9" recordCount="5.0"/>
+                <ScoreDistribution value="4" recordCount="0.0"/>
+                <ScoreDistribution value="7" recordCount="0.0"/>
+                <ScoreDistribution value="2" recordCount="0.0"/>
+                <ScoreDistribution value="5" recordCount="0.0"/>
+                <ScoreDistribution value="6" recordCount="0.0"/>
+              </Node>
+              <Node id="82" score="8" recordCount="1.0">
+                <SimplePredicate field="Plataforma_mas_usada" operator="equal" value="WhatsApp"/>
+                <ScoreDistribution value="8" recordCount="1.0"/>
+                <ScoreDistribution value="3" recordCount="0.0"/>
+                <ScoreDistribution value="9" recordCount="0.0"/>
+                <ScoreDistribution value="4" recordCount="0.0"/>
+                <ScoreDistribution value="7" recordCount="0.0"/>
+                <ScoreDistribution value="2" recordCount="0.0"/>
+                <ScoreDistribution value="5" recordCount="0.0"/>
+                <ScoreDistribution value="6" recordCount="0.0"/>
+              </Node>
+            </Node>
+          </Node>
+        </Node>
+      </Node>
+      <Node id="84" score="3" recordCount="17.0">
+        <SimplePredicate field="resultado" operator="equal" value="bajo"/>
+        <ScoreDistribution value="8" recordCount="0.0"/>
+        <ScoreDistribution value="3" recordCount="16.0"/>
+        <ScoreDistribution value="9" recordCount="0.0"/>
+        <ScoreDistribution value="4" recordCount="0.0"/>
+        <ScoreDistribution value="7" recordCount="0.0"/>
+        <ScoreDistribution value="2" recordCount="1.0"/>
+        <ScoreDistribution value="5" recordCount="0.0"/>
+        <ScoreDistribution value="6" recordCount="0.0"/>
+      </Node>
+      <Node id="99" score="5" recordCount="280.0">
+        <SimplePredicate field="resultado" operator="equal" value="medio"/>
+        <ScoreDistribution value="8" recordCount="0.0"/>
+        <ScoreDistribution value="3" recordCount="0.0"/>
+        <ScoreDistribution value="9" recordCount="0.0"/>
+        <ScoreDistribution value="4" recordCount="83.0"/>
+        <ScoreDistribution value="7" recordCount="0.0"/>
+        <ScoreDistribution value="2" recordCount="0.0"/>
+        <ScoreDistribution value="5" recordCount="136.0"/>
+        <ScoreDistribution value="6" recordCount="61.0"/>
+        <Node id="100" score="5" recordCount="191.0">
+          <SimplePredicate field="Puntaje_Salud_Mental" operator="lessOrEqual" value="7.5"/>
+          <ScoreDistribution value="8" recordCount="0.0"/>
+          <ScoreDistribution value="3" recordCount="0.0"/>
+          <ScoreDistribution value="9" recordCount="0.0"/>
+          <ScoreDistribution value="4" recordCount="3.0"/>
+          <ScoreDistribution value="7" recordCount="0.0"/>
+          <ScoreDistribution value="2" recordCount="0.0"/>
+          <ScoreDistribution value="5" recordCount="127.0"/>
+          <ScoreDistribution value="6" recordCount="61.0"/>
+          <Node id="101" score="5" recordCount="146.0">
+            <SimplePredicate field="Afecta_Rendimiento_Academico" operator="lessOrEqual" value="0.5"/>
+            <ScoreDistribution value="8" recordCount="0.0"/>
+            <ScoreDistribution value="3" recordCount="0.0"/>
+            <ScoreDistribution value="9" recordCount="0.0"/>
+            <ScoreDistribution value="4" recordCount="3.0"/>
+            <ScoreDistribution value="7" recordCount="0.0"/>
+            <ScoreDistribution value="2" recordCount="0.0"/>
+            <ScoreDistribution value="5" recordCount="127.0"/>
+            <ScoreDistribution value="6" recordCount="16.0"/>
+            <Node id="102" score="5" recordCount="38.0">
+              <SimplePredicate field="Plataforma_mas_usada" operator="equal" value="Instagram"/>
+              <ScoreDistribution value="8" recordCount="0.0"/>
+              <ScoreDistribution value="3" recordCount="0.0"/>
+              <ScoreDistribution value="9" recordCount="0.0"/>
+              <ScoreDistribution value="4" recordCount="1.0"/>
+              <ScoreDistribution value="7" recordCount="0.0"/>
+              <ScoreDistribution value="2" recordCount="0.0"/>
+              <ScoreDistribution value="5" recordCount="37.0"/>
+              <ScoreDistribution value="6" recordCount="0.0"/>
+            </Node>
+            <Node id="106" score="5" recordCount="9.0">
+              <SimplePredicate field="Plataforma_mas_usada" operator="equal" value="Twitter"/>
+              <ScoreDistribution value="8" recordCount="0.0"/>
+              <ScoreDistribution value="3" recordCount="0.0"/>
+              <ScoreDistribution value="9" recordCount="0.0"/>
+              <ScoreDistribution value="4" recordCount="0.0"/>
+              <ScoreDistribution value="7" recordCount="0.0"/>
+              <ScoreDistribution value="2" recordCount="0.0"/>
+              <ScoreDistribution value="5" recordCount="9.0"/>
+              <ScoreDistribution value="6" recordCount="0.0"/>
+            </Node>
+            <Node id="107" score="5" recordCount="9.0">
+              <SimplePredicate field="Plataforma_mas_usada" operator="equal" value="TikTok"/>
+              <ScoreDistribution value="8" recordCount="0.0"/>
+              <ScoreDistribution value="3" recordCount="0.0"/>
+              <ScoreDistribution value="9" recordCount="0.0"/>
+              <ScoreDistribution value="4" recordCount="0.0"/>
+              <ScoreDistribution value="7" recordCount="0.0"/>
+              <ScoreDistribution value="2" recordCount="0.0"/>
+              <ScoreDistribution value="5" recordCount="9.0"/>
+              <ScoreDistribution value="6" recordCount="0.0"/>
+            </Node>
+            <Node id="108" score="6" recordCount="7.0">
+              <SimplePredicate field="Plataforma_mas_usada" operator="equal" value="YouTube"/>
+              <ScoreDistribution value="8" recordCount="0.0"/>
+              <ScoreDistribution value="3" recordCount="0.0"/>
+              <ScoreDistribution value="9" recordCount="0.0"/>
+              <ScoreDistribution value="4" recordCount="1.0"/>
+              <ScoreDistribution value="7" recordCount="0.0"/>
+              <ScoreDistribution value="2" recordCount="0.0"/>
+              <ScoreDistribution value="5" recordCount="2.0"/>
+              <ScoreDistribution value="6" recordCount="4.0"/>
+              <Node id="109" score="6" recordCount="3.0">
+                <SimplePredicate field="Descanso" operator="lessOrEqual" value="6.5"/>
+                <ScoreDistribution value="8" recordCount="0.0"/>
+                <ScoreDistribution value="3" recordCount="0.0"/>
+                <ScoreDistribution value="9" recordCount="0.0"/>
+                <ScoreDistribution value="4" recordCount="0.0"/>
+                <ScoreDistribution value="7" recordCount="0.0"/>
+                <ScoreDistribution value="2" recordCount="0.0"/>
+                <ScoreDistribution value="5" recordCount="0.0"/>
+                <ScoreDistribution value="6" recordCount="3.0"/>
+              </Node>
+              <Node id="110" score="5" recordCount="4.0">
+                <SimplePredicate field="Descanso" operator="greaterThan" value="6.5"/>
+                <ScoreDistribution value="8" recordCount="0.0"/>
+                <ScoreDistribution value="3" recordCount="0.0"/>
+                <ScoreDistribution value="9" recordCount="0.0"/>
+                <ScoreDistribution value="4" recordCount="1.0"/>
+                <ScoreDistribution value="7" recordCount="0.0"/>
+                <ScoreDistribution value="2" recordCount="0.0"/>
+                <ScoreDistribution value="5" recordCount="2.0"/>
+                <ScoreDistribution value="6" recordCount="1.0"/>
+              </Node>
+            </Node>
+            <Node id="113" score="5" recordCount="62.0">
+              <SimplePredicate field="Plataforma_mas_usada" operator="equal" value="Facebook"/>
+              <ScoreDistribution value="8" recordCount="0.0"/>
+              <ScoreDistribution value="3" recordCount="0.0"/>
+              <ScoreDistribution value="9" recordCount="0.0"/>
+              <ScoreDistribution value="4" recordCount="1.0"/>
+              <ScoreDistribution value="7" recordCount="0.0"/>
+              <ScoreDistribution value="2" recordCount="0.0"/>
+              <ScoreDistribution value="5" recordCount="50.0"/>
+              <ScoreDistribution value="6" recordCount="11.0"/>
+              <Node id="114" score="5" recordCount="35.0">
+                <SimplePredicate field="Estado_Sentimental" operator="equal" value="En una relación"/>
+                <ScoreDistribution value="8" recordCount="0.0"/>
+                <ScoreDistribution value="3" recordCount="0.0"/>
+                <ScoreDistribution value="9" recordCount="0.0"/>
+                <ScoreDistribution value="4" recordCount="1.0"/>
+                <ScoreDistribution value="7" recordCount="0.0"/>
+                <ScoreDistribution value="2" recordCount="0.0"/>
+                <ScoreDistribution value="5" recordCount="24.0"/>
+                <ScoreDistribution value="6" recordCount="10.0"/>
+                <Node id="115" score="5" recordCount="23.0">
+                  <SimplePredicate field="Descanso" operator="lessOrEqual" value="7.5"/>
+                  <ScoreDistribution value="8" recordCount="0.0"/>
+                  <ScoreDistribution value="3" recordCount="0.0"/>
+                  <ScoreDistribution value="9" recordCount="0.0"/>
+                  <ScoreDistribution value="4" recordCount="0.0"/>
+                  <ScoreDistribution value="7" recordCount="0.0"/>
+                  <ScoreDistribution value="2" recordCount="0.0"/>
+                  <ScoreDistribution value="5" recordCount="20.0"/>
+                  <ScoreDistribution value="6" recordCount="3.0"/>
+                  <Node id="116" score="5" recordCount="11.0">
+                    <SimplePredicate field="Promedio_Horas_Diarias_Uso" operator="lessOrEqual" value="4.5"/>
+                    <ScoreDistribution value="8" recordCount="0.0"/>
+                    <ScoreDistribution value="3" recordCount="0.0"/>
+                    <ScoreDistribution value="9" recordCount="0.0"/>
+                    <ScoreDistribution value="4" recordCount="0.0"/>
+                    <ScoreDistribution value="7" recordCount="0.0"/>
+                    <ScoreDistribution value="2" recordCount="0.0"/>
+                    <ScoreDistribution value="5" recordCount="11.0"/>
+                    <ScoreDistribution value="6" recordCount="0.0"/>
+                  </Node>
+                  <Node id="117" score="5" recordCount="12.0">
+                    <SimplePredicate field="Promedio_Horas_Diarias_Uso" operator="greaterThan" value="4.5"/>
+                    <ScoreDistribution value="8" recordCount="0.0"/>
+                    <ScoreDistribution value="3" recordCount="0.0"/>
+                    <ScoreDistribution value="9" recordCount="0.0"/>
+                    <ScoreDistribution value="4" recordCount="0.0"/>
+                    <ScoreDistribution value="7" recordCount="0.0"/>
+                    <ScoreDistribution value="2" recordCount="0.0"/>
+                    <ScoreDistribution value="5" recordCount="9.0"/>
+                    <ScoreDistribution value="6" recordCount="3.0"/>
+                    <Node id="118" score="5" recordCount="7.0">
+                      <SimplePredicate field="Edad" operator="lessOrEqual" value="22.5"/>
+                      <ScoreDistribution value="8" recordCount="0.0"/>
+                      <ScoreDistribution value="3" recordCount="0.0"/>
+                      <ScoreDistribution value="9" recordCount="0.0"/>
+                      <ScoreDistribution value="4" recordCount="0.0"/>
+                      <ScoreDistribution value="7" recordCount="0.0"/>
+                      <ScoreDistribution value="2" recordCount="0.0"/>
+                      <ScoreDistribution value="5" recordCount="4.0"/>
+                      <ScoreDistribution value="6" recordCount="3.0"/>
+                      <Node id="119" score="5" recordCount="3.0">
+                        <SimplePredicate field="Nivel_Academico" operator="equal" value="Pregrado"/>
+                        <ScoreDistribution value="8" recordCount="0.0"/>
+                        <ScoreDistribution value="3" recordCount="0.0"/>
+                        <ScoreDistribution value="9" recordCount="0.0"/>
+                        <ScoreDistribution value="4" recordCount="0.0"/>
+                        <ScoreDistribution value="7" recordCount="0.0"/>
+                        <ScoreDistribution value="2" recordCount="0.0"/>
+                        <ScoreDistribution value="5" recordCount="3.0"/>
+                        <ScoreDistribution value="6" recordCount="0.0"/>
+                      </Node>
+                      <Node id="120" score="6" recordCount="4.0">
+                        <SimplePredicate field="Nivel_Academico" operator="equal" value="Posgrado"/>
+                        <ScoreDistribution value="8" recordCount="0.0"/>
+                        <ScoreDistribution value="3" recordCount="0.0"/>
+                        <ScoreDistribution value="9" recordCount="0.0"/>
+                        <ScoreDistribution value="4" recordCount="0.0"/>
+                        <ScoreDistribution value="7" recordCount="0.0"/>
+                        <ScoreDistribution value="2" recordCount="0.0"/>
+                        <ScoreDistribution value="5" recordCount="1.0"/>
+                        <ScoreDistribution value="6" recordCount="3.0"/>
+                      </Node>
+                    </Node>
+                    <Node id="124" score="5" recordCount="5.0">
+                      <SimplePredicate field="Edad" operator="greaterThan" value="22.5"/>
+                      <ScoreDistribution value="8" recordCount="0.0"/>
+                      <ScoreDistribution value="3" recordCount="0.0"/>
+                      <ScoreDistribution value="9" recordCount="0.0"/>
+                      <ScoreDistribution value="4" recordCount="0.0"/>
+                      <ScoreDistribution value="7" recordCount="0.0"/>
+                      <ScoreDistribution value="2" recordCount="0.0"/>
+                      <ScoreDistribution value="5" recordCount="5.0"/>
+                      <ScoreDistribution value="6" recordCount="0.0"/>
+                    </Node>
+                  </Node>
+                </Node>
+                <Node id="125" score="6" recordCount="12.0">
+                  <SimplePredicate field="Descanso" operator="greaterThan" value="7.5"/>
+                  <ScoreDistribution value="8" recordCount="0.0"/>
+                  <ScoreDistribution value="3" recordCount="0.0"/>
+                  <ScoreDistribution value="9" recordCount="0.0"/>
+                  <ScoreDistribution value="4" recordCount="1.0"/>
+                  <ScoreDistribution value="7" recordCount="0.0"/>
+                  <ScoreDistribution value="2" recordCount="0.0"/>
+                  <ScoreDistribution value="5" recordCount="4.0"/>
+                  <ScoreDistribution value="6" recordCount="7.0"/>
+                  <Node id="126" score="5" recordCount="3.0">
+                    <SimplePredicate field="genero" operator="equal" value="Femenino"/>
+                    <ScoreDistribution value="8" recordCount="0.0"/>
+                    <ScoreDistribution value="3" recordCount="0.0"/>
+                    <ScoreDistribution value="9" recordCount="0.0"/>
+                    <ScoreDistribution value="4" recordCount="0.0"/>
+                    <ScoreDistribution value="7" recordCount="0.0"/>
+                    <ScoreDistribution value="2" recordCount="0.0"/>
+                    <ScoreDistribution value="5" recordCount="3.0"/>
+                    <ScoreDistribution value="6" recordCount="0.0"/>
+                  </Node>
+                  <Node id="127" score="6" recordCount="9.0">
+                    <SimplePredicate field="genero" operator="equal" value="Masculino"/>
+                    <ScoreDistribution value="8" recordCount="0.0"/>
+                    <ScoreDistribution value="3" recordCount="0.0"/>
+                    <ScoreDistribution value="9" recordCount="0.0"/>
+                    <ScoreDistribution value="4" recordCount="1.0"/>
+                    <ScoreDistribution value="7" recordCount="0.0"/>
+                    <ScoreDistribution value="2" recordCount="0.0"/>
+                    <ScoreDistribution value="5" recordCount="1.0"/>
+                    <ScoreDistribution value="6" recordCount="7.0"/>
+                    <Node id="128" score="6" recordCount="4.0">
+                      <SimplePredicate field="Promedio_Horas_Diarias_Uso" operator="lessOrEqual" value="4.5"/>
+                      <ScoreDistribution value="8" recordCount="0.0"/>
+                      <ScoreDistribution value="3" recordCount="0.0"/>
+                      <ScoreDistribution value="9" recordCount="0.0"/>
+                      <ScoreDistribution value="4" recordCount="1.0"/>
+                      <ScoreDistribution value="7" recordCount="0.0"/>
+                      <ScoreDistribution value="2" recordCount="0.0"/>
+                      <ScoreDistribution value="5" recordCount="1.0"/>
+                      <ScoreDistribution value="6" recordCount="2.0"/>
+                      <Node id="129" score="4" recordCount="2.0">
+                        <SimplePredicate field="Descanso" operator="lessOrEqual" value="8.5"/>
+                        <ScoreDistribution value="8" recordCount="0.0"/>
+                        <ScoreDistribution value="3" recordCount="0.0"/>
+                        <ScoreDistribution value="9" recordCount="0.0"/>
+                        <ScoreDistribution value="4" recordCount="1.0"/>
+                        <ScoreDistribution value="7" recordCount="0.0"/>
+                        <ScoreDistribution value="2" recordCount="0.0"/>
+                        <ScoreDistribution value="5" recordCount="1.0"/>
+                        <ScoreDistribution value="6" recordCount="0.0"/>
+                      </Node>
+                      <Node id="130" score="6" recordCount="2.0">
+                        <SimplePredicate field="Descanso" operator="greaterThan" value="8.5"/>
+                        <ScoreDistribution value="8" recordCount="0.0"/>
+                        <ScoreDistribution value="3" recordCount="0.0"/>
+                        <ScoreDistribution value="9" recordCount="0.0"/>
+                        <ScoreDistribution value="4" recordCount="0.0"/>
+                        <ScoreDistribution value="7" recordCount="0.0"/>
+                        <ScoreDistribution value="2" recordCount="0.0"/>
+                        <ScoreDistribution value="5" recordCount="0.0"/>
+                        <ScoreDistribution value="6" recordCount="2.0"/>
+                      </Node>
+                    </Node>
+                    <Node id="131" score="6" recordCount="5.0">
+                      <SimplePredicate field="Promedio_Horas_Diarias_Uso" operator="greaterThan" value="4.5"/>
+                      <ScoreDistribution value="8" recordCount="0.0"/>
+                      <ScoreDistribution value="3" recordCount="0.0"/>
+                      <ScoreDistribution value="9" recordCount="0.0"/>
+                      <ScoreDistribution value="4" recordCount="0.0"/>
+                      <ScoreDistribution value="7" recordCount="0.0"/>
+                      <ScoreDistribution value="2" recordCount="0.0"/>
+                      <ScoreDistribution value="5" recordCount="0.0"/>
+                      <ScoreDistribution value="6" recordCount="5.0"/>
+                    </Node>
+                  </Node>
+                </Node>
+              </Node>
+              <Node id="132" score="5" recordCount="26.0">
+                <SimplePredicate field="Estado_Sentimental" operator="equal" value="Soltero/a"/>
+                <ScoreDistribution value="8" recordCount="0.0"/>
+                <ScoreDistribution value="3" recordCount="0.0"/>
+                <ScoreDistribution value="9" recordCount="0.0"/>
+                <ScoreDistribution value="4" recordCount="0.0"/>
+                <ScoreDistribution value="7" recordCount="0.0"/>
+                <ScoreDistribution value="2" recordCount="0.0"/>
+                <ScoreDistribution value="5" recordCount="26.0"/>
+                <ScoreDistribution value="6" recordCount="0.0"/>
+              </Node>
+              <Node id="133" score="6" recordCount="1.0">
+                <SimplePredicate field="Estado_Sentimental" operator="equal" value="Complicado"/>
+                <ScoreDistribution value="8" recordCount="0.0"/>
+                <ScoreDistribution value="3" recordCount="0.0"/>
+                <ScoreDistribution value="9" recordCount="0.0"/>
+                <ScoreDistribution value="4" recordCount="0.0"/>
+                <ScoreDistribution value="7" recordCount="0.0"/>
+                <ScoreDistribution value="2" recordCount="0.0"/>
+                <ScoreDistribution value="5" recordCount="0.0"/>
+                <ScoreDistribution value="6" recordCount="1.0"/>
+              </Node>
+            </Node>
+            <Node id="134" score="5" recordCount="1.0">
+              <SimplePredicate field="Plataforma_mas_usada" operator="equal" value="LinkedIn"/>
+              <ScoreDistribution value="8" recordCount="0.0"/>
+              <ScoreDistribution value="3" recordCount="0.0"/>
+              <ScoreDistribution value="9" recordCount="0.0"/>
+              <ScoreDistribution value="4" recordCount="0.0"/>
+              <ScoreDistribution value="7" recordCount="0.0"/>
+              <ScoreDistribution value="2" recordCount="0.0"/>
+              <ScoreDistribution value="5" recordCount="1.0"/>
+              <ScoreDistribution value="6" recordCount="0.0"/>
+            </Node>
+            <Node id="135" score="6" recordCount="1.0">
+              <SimplePredicate field="Plataforma_mas_usada" operator="equal" value="Snapchat"/>
+              <ScoreDistribution value="8" recordCount="0.0"/>
+              <ScoreDistribution value="3" recordCount="0.0"/>
+              <ScoreDistribution value="9" recordCount="0.0"/>
+              <ScoreDistribution value="4" recordCount="0.0"/>
+              <ScoreDistribution value="7" recordCount="0.0"/>
+              <ScoreDistribution value="2" recordCount="0.0"/>
+              <ScoreDistribution value="5" recordCount="0.0"/>
+              <ScoreDistribution value="6" recordCount="1.0"/>
+            </Node>
+            <Node id="138" score="5" recordCount="12.0">
+              <SimplePredicate field="Plataforma_mas_usada" operator="equal" value="VKontakte"/>
+              <ScoreDistribution value="8" recordCount="0.0"/>
+              <ScoreDistribution value="3" recordCount="0.0"/>
+              <ScoreDistribution value="9" recordCount="0.0"/>
+              <ScoreDistribution value="4" recordCount="0.0"/>
+              <ScoreDistribution value="7" recordCount="0.0"/>
+              <ScoreDistribution value="2" recordCount="0.0"/>
+              <ScoreDistribution value="5" recordCount="12.0"/>
+              <ScoreDistribution value="6" recordCount="0.0"/>
+            </Node>
+            <Node id="140" score="5" recordCount="7.0">
+              <SimplePredicate field="Plataforma_mas_usada" operator="equal" value="WeChat"/>
+              <ScoreDistribution value="8" recordCount="0.0"/>
+              <ScoreDistribution value="3" recordCount="0.0"/>
+              <ScoreDistribution value="9" recordCount="0.0"/>
+              <ScoreDistribution value="4" recordCount="0.0"/>
+              <ScoreDistribution value="7" recordCount="0.0"/>
+              <ScoreDistribution value="2" recordCount="0.0"/>
+              <ScoreDistribution value="5" recordCount="7.0"/>
+              <ScoreDistribution value="6" recordCount="0.0"/>
+            </Node>
+          </Node>
+          <Node id="141" score="6" recordCount="45.0">
+            <SimplePredicate field="Afecta_Rendimiento_Academico" operator="greaterThan" value="0.5"/>
+            <ScoreDistribution value="8" recordCount="0.0"/>
+            <ScoreDistribution value="3" recordCount="0.0"/>
+            <ScoreDistribution value="9" recordCount="0.0"/>
+            <ScoreDistribution value="4" recordCount="0.0"/>
+            <ScoreDistribution value="7" recordCount="0.0"/>
+            <ScoreDistribution value="2" recordCount="0.0"/>
+            <ScoreDistribution value="5" recordCount="0.0"/>
+            <ScoreDistribution value="6" recordCount="45.0"/>
+          </Node>
+        </Node>
+        <Node id="142" score="4" recordCount="89.0">
+          <SimplePredicate field="Puntaje_Salud_Mental" operator="greaterThan" value="7.5"/>
+          <ScoreDistribution value="8" recordCount="0.0"/>
+          <ScoreDistribution value="3" recordCount="0.0"/>
+          <ScoreDistribution value="9" recordCount="0.0"/>
+          <ScoreDistribution value="4" recordCount="80.0"/>
+          <ScoreDistribution value="7" recordCount="0.0"/>
+          <ScoreDistribution value="2" recordCount="0.0"/>
+          <ScoreDistribution value="5" recordCount="9.0"/>
+          <ScoreDistribution value="6" recordCount="0.0"/>
+          <Node id="143" score="4" recordCount="87.0">
+            <SimplePredicate field="Promedio_Horas_Diarias_Uso" operator="lessOrEqual" value="4.5"/>
+            <ScoreDistribution value="8" recordCount="0.0"/>
+            <ScoreDistribution value="3" recordCount="0.0"/>
+            <ScoreDistribution value="9" recordCount="0.0"/>
+            <ScoreDistribution value="4" recordCount="80.0"/>
+            <ScoreDistribution value="7" recordCount="0.0"/>
+            <ScoreDistribution value="2" recordCount="0.0"/>
+            <ScoreDistribution value="5" recordCount="7.0"/>
+            <ScoreDistribution value="6" recordCount="0.0"/>
+            <Node id="144" score="4" recordCount="37.0">
+              <SimplePredicate field="Plataforma_mas_usada" operator="equal" value="Instagram"/>
+              <ScoreDistribution value="8" recordCount="0.0"/>
+              <ScoreDistribution value="3" recordCount="0.0"/>
+              <ScoreDistribution value="9" recordCount="0.0"/>
+              <ScoreDistribution value="4" recordCount="30.0"/>
+              <ScoreDistribution value="7" recordCount="0.0"/>
+              <ScoreDistribution value="2" recordCount="0.0"/>
+              <ScoreDistribution value="5" recordCount="7.0"/>
+              <ScoreDistribution value="6" recordCount="0.0"/>
+              <Node id="145" score="5" recordCount="6.0">
+                <SimplePredicate field="Estado_Sentimental" operator="equal" value="En una relación"/>
+                <ScoreDistribution value="8" recordCount="0.0"/>
+                <ScoreDistribution value="3" recordCount="0.0"/>
+                <ScoreDistribution value="9" recordCount="0.0"/>
+                <ScoreDistribution value="4" recordCount="0.0"/>
+                <ScoreDistribution value="7" recordCount="0.0"/>
+                <ScoreDistribution value="2" recordCount="0.0"/>
+                <ScoreDistribution value="5" recordCount="6.0"/>
+                <ScoreDistribution value="6" recordCount="0.0"/>
+              </Node>
+              <Node id="146" score="4" recordCount="31.0">
+                <SimplePredicate field="Estado_Sentimental" operator="equal" value="Soltero/a"/>
+                <ScoreDistribution value="8" recordCount="0.0"/>
+                <ScoreDistribution value="3" recordCount="0.0"/>
+                <ScoreDistribution value="9" recordCount="0.0"/>
+                <ScoreDistribution value="4" recordCount="30.0"/>
+                <ScoreDistribution value="7" recordCount="0.0"/>
+                <ScoreDistribution value="2" recordCount="0.0"/>
+                <ScoreDistribution value="5" recordCount="1.0"/>
+                <ScoreDistribution value="6" recordCount="0.0"/>
+              </Node>
+            </Node>
+            <Node id="154" score="4" recordCount="9.0">
+              <SimplePredicate field="Plataforma_mas_usada" operator="equal" value="Twitter"/>
+              <ScoreDistribution value="8" recordCount="0.0"/>
+              <ScoreDistribution value="3" recordCount="0.0"/>
+              <ScoreDistribution value="9" recordCount="0.0"/>
+              <ScoreDistribution value="4" recordCount="9.0"/>
+              <ScoreDistribution value="7" recordCount="0.0"/>
+              <ScoreDistribution value="2" recordCount="0.0"/>
+              <ScoreDistribution value="5" recordCount="0.0"/>
+              <ScoreDistribution value="6" recordCount="0.0"/>
+            </Node>
+            <Node id="155" score="4" recordCount="1.0">
+              <SimplePredicate field="Plataforma_mas_usada" operator="equal" value="TikTok"/>
+              <ScoreDistribution value="8" recordCount="0.0"/>
+              <ScoreDistribution value="3" recordCount="0.0"/>
+              <ScoreDistribution value="9" recordCount="0.0"/>
+              <ScoreDistribution value="4" recordCount="1.0"/>
+              <ScoreDistribution value="7" recordCount="0.0"/>
+              <ScoreDistribution value="2" recordCount="0.0"/>
+              <ScoreDistribution value="5" recordCount="0.0"/>
+              <ScoreDistribution value="6" recordCount="0.0"/>
+            </Node>
+            <Node id="157" score="4" recordCount="24.0">
+              <SimplePredicate field="Plataforma_mas_usada" operator="equal" value="Facebook"/>
+              <ScoreDistribution value="8" recordCount="0.0"/>
+              <ScoreDistribution value="3" recordCount="0.0"/>
+              <ScoreDistribution value="9" recordCount="0.0"/>
+              <ScoreDistribution value="4" recordCount="24.0"/>
+              <ScoreDistribution value="7" recordCount="0.0"/>
+              <ScoreDistribution value="2" recordCount="0.0"/>
+              <ScoreDistribution value="5" recordCount="0.0"/>
+              <ScoreDistribution value="6" recordCount="0.0"/>
+            </Node>
+            <Node id="158" score="4" recordCount="16.0">
+              <SimplePredicate field="Plataforma_mas_usada" operator="equal" value="LinkedIn"/>
+              <ScoreDistribution value="8" recordCount="0.0"/>
+              <ScoreDistribution value="3" recordCount="0.0"/>
+              <ScoreDistribution value="9" recordCount="0.0"/>
+              <ScoreDistribution value="4" recordCount="16.0"/>
+              <ScoreDistribution value="7" recordCount="0.0"/>
+              <ScoreDistribution value="2" recordCount="0.0"/>
+              <ScoreDistribution value="5" recordCount="0.0"/>
+              <ScoreDistribution value="6" recordCount="0.0"/>
+            </Node>
+          </Node>
+          <Node id="165" score="5" recordCount="2.0">
+            <SimplePredicate field="Promedio_Horas_Diarias_Uso" operator="greaterThan" value="4.5"/>
+            <ScoreDistribution value="8" recordCount="0.0"/>
+            <ScoreDistribution value="3" recordCount="0.0"/>
+            <ScoreDistribution value="9" recordCount="0.0"/>
+            <ScoreDistribution value="4" recordCount="0.0"/>
+            <ScoreDistribution value="7" recordCount="0.0"/>
+            <ScoreDistribution value="2" recordCount="0.0"/>
+            <ScoreDistribution value="5" recordCount="2.0"/>
+            <ScoreDistribution value="6" recordCount="0.0"/>
+          </Node>
+        </Node>
+      </Node>
+    </Node>
+  </TreeModel>
+</PMML>
